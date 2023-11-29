@@ -1,0 +1,121 @@
+/* ====================== VARIABLE CSS =============== */
+:root{
+    --header-height: 3rem;
+
+    /* =======================COLORS================= */
+    --main-color: rgb(1,177,13);
+    --first-color: rgb(231,231,231);
+    --second-color:rgb(222,247,241);
+    --main-gradient: linear-gradient(121deg, rgb(100, 208, 100) 25%, rgb(1, 177, 13) 108%);
+    --dark-bg: rgb(13,13,13);
+    --main-color-alt:rgb(99,177,13);
+    --text-color: #707070;
+    --white-color: #ffffff;
+    --white-alt: #e6e6e6;
+
+    /* ========================FONT AND TOPOLOGY============================ */
+    --body-font: 'Poppins', sans-serif;
+    --biggest-font-size: 2.2rem;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1rem;
+   --normal-font-size:938rem;
+   --small-font-size:813rem;
+   --smaller-font-size:75rem;
+
+
+   /* =========================FONT WIDTH=============== */
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  /* ========================MARGIN PADDING============================== */
+  --md-1: .5rem;
+  --mb-2: 1rem;
+  --mb-3: 1.5rem;
+  --mb-4: 2rem;
+  --mb-5: 2.5rem;
+  --mb-6: 3rem;
+
+
+  /* ==========================Z INDEX=========================== */
+  --z-tooltip:10;
+  --z-fixed: 100;
+
+}
+
+
+
+::before,
+::after{
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    color: var(--text-color);
+    font-size: 13px;
+    font-weight: 400;
+    font-family: var(--body-font);
+    line-height: 28px;
+    overflow-x: hidden;
+    background-color:  rgb(231,231,231);}
+
+img{
+    vertical-align: middle;
+    height: auto;
+}
+a{
+    text-decoration: none;
+    display: inline-block;
+}
+.login-register{
+    height: 50%;
+    width: 400px;
+    background: rgb(222,247,241);
+    justify-content: center;
+    box-shadow: -2px 3px 13px 0px #ddd;
+
+}
+.chart-nav{
+    font-weight: 500;
+}
+
+.chart-nav.active {
+    background-color:  rgb(1,177,13) !important;
+    background: #fff;
+    color: white !important;
+    border-bottom: 2px solid var(--main-color);
+    border-radius: 0;
+}
+.chart-nav:hover {
+    color: var(--main-color);
+}
+
+.register{
+     display: grid;
+  place-items: center;
+  height: 100vh;
+}
+.login-register form {
+    padding: 10px;
+    justify-content: space-between;
+}
+
+.login-register .form-group {
+    margin-bottom: 10px;
+    /* border: 1px solid rgb(13,13,14); */
+    border-radius: 5px;
+    box-sizing: border-box;
+    box-shadow: -1px 1px 2px 1px rgb(100, 208, 100);
+}
+button.btn.btn-primary.form-group.button-in {
+    background: linear-gradient(121deg, rgb(100, 208, 100) 25%, rgb(1, 177, 13) 108%);
+    width: 70%;
+    top: 5px;
+    border: 0px;
+    font-size: 17px;
+    font-weight: 600;
+    margin-top: 5px;
+    box-shadow: -1px 2px 3px 1px #ddd;
+}

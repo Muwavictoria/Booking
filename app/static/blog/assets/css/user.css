@@ -1,0 +1,56 @@
+
+.user-content{
+    color: var(--text-color);
+    width: 70%;
+    margin: auto;
+}
+.details-container.user-profile{
+    text-align: center;
+}
+.user-profile-details{
+    /* height: 100vh; */
+    margin-top: 100px;
+    margin-bottom: 20px;
+}
+.user-details{
+    background: var(--second-color);
+    /* height: 800px; */
+    width: 1000px;
+    margin: auto;
+    padding-bottom: 20px;
+    text-align: center;
+    font-size: 15px;
+}
+.user-header{
+    padding: 20px;
+    font-size: 16px;
+    font-weight: 800;
+
+}
+.user-image {
+    object-fit: contain;
+    justify-content: center;
+    color: black;
+    width: 100%;
+    padding: 0;
+}
+
+.user-image img{
+    width: 300px;
+    object-fit: contain;
+    text-align: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+.booked_cars{
+    padding: 10px;
+    color: var(--text-color);
+    width: 70%;
+    margin: auto
+}
+.user-edit{
+    background: var(--main-gradient);
+    width: 100px;
+    margin-top: 10px;
+
+}

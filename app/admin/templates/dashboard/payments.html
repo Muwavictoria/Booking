@@ -1,0 +1,74 @@
+{% extends "dashboard/dashboard.html"%}
+
+
+{% block content %}
+<div class="container card card-cars">
+
+  <div class="row">
+  
+
+    <!-- content starts here -->
+    <div class="col">
+      <h2  class="btn ml-auto  pull-right add-car" data-toggle="modal" data-target="#myModal" >PAYMENTS</h2>
+      
+
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-success alert-dismissable" role="alert">
+        <button type="button" class="close" data-dismiss="alert" arial-label="close">
+          <span arial-hidden="true">&times;</span>
+          {{msg}}
+        </button>
+      </div>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+
+
+      <!-- table for displaying fetched car } -->
+      <table class="table">
+        <thead>
+         <tr>
+              <th scope="col">Payment ID</th>
+             <th scope="col">Booking ID</th>
+             <th scope="col">Card Number</th>
+             <th scope="col">Expiration Date</th>
+             
+         </tr>
+        </thead>
+        <tbody>
+          {% for payment in payments%}
+         <tr>
+            <td scope="col">{{ payment.payment_id }}</td>
+            <td scope="col">{{ payment.booking_id }}</td>
+            <td scope="col">{{ payment.card_number }}</td>
+            <td scope="col">{{ payment.expiration_date }}</td>
+             
+         </tr>
+         {% endfor %}
+         
+      </tbody>
+     
+     
+    </table>
+        
+         
+       
+
+
+    </div>
+    <!-- content starts here -->
+    
+  </div>
+
+</div>
+
+
+
+
+
+
+
+{% endblock %}
+

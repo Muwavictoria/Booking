@@ -1,0 +1,161 @@
+{% extends "dashboard/dashboard.html"%}
+
+
+{% block content %}
+<div class="container card card-cars">
+
+    <div class="row">
+        <section class="dashboard-top-sec">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="bg-white top-chart-earn">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="last-month">
+                                        <h5>Dashboard</h5>
+                                        <p>Preview of Lastest Month</p>
+
+
+                                        <div class="earn">
+                                            <h2>$33367.98</h2>
+                                            <p>Current Month Sales</p>
+                                        </div>
+
+                                        <a href="" class="di-btn purple-gradient">Last Month Summary</a>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-8 my-2 ps-0">
+                                    <div class="classic-tabs">
+                                        <!-- =======new tabs======== -->
+                                        <div class="tabs-wrapper">
+                                            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                                <li class="nav-item" >
+                                                    <a href="" class="nav-link chart-nav  active" id="pills-week-tab" data-bs-toggle="pill" data-bs-target="#pills-week" type="button " role="tab" aria-controls="pills-week" aria-selected="true">Week</a >
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="" class="nav-link chart-nav  " id="pill-month-tab" data-bs-toggle="pill" data-bs-target="#pill-month" type="button " role="tab" aria-controls="pill-month" aria-selected="false">Month</a >
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="" class="nav-link chart-nav waves-light waves-effect " id="pills-year-tab" data-bs-toggle="pill" data-bs-target="#pills-year" type="button " role="tab" aria-controls="pills-year" aria-selected="false">Year</a >
+                                                </li>
+
+                                            </ul>
+                                            <div class="tab-content" id="pills-tabContent">
+                                                <div class="tab-pane fade show active" id="pills-week" role="tabpanel" aria-labelledby="pills-week-tab" tabindex="0">week</div>
+                                                <div class="tab-pane fade" id="pill-month" role="tabpanel" aria-labelledby="pill-month-tab" tabindex="0">month</div>
+                                                <div class="tab-pane fade" id="pills-year" role="tabpanel" aria-labelledby="pills-year-tab" tabindex="0">year</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="wre-sec">
+                            <div class="row">
+                                <div class="col-sm col-md-6 ">
+                                    <div class="earn-view">
+                                        <span class="fas fa-crown earn-icon .icon">
+                                            <div class="earn-view-text">
+                                                <p class="name-text">Wallet Balance</p>
+                                                <h6 class="balance-text">
+                                                    $1684.54
+                                                </h6>
+                                            </div>
+                                        </span>
+                                    </div>
+
+                                </div>
+                                <div class="col-sm  col-md-6 ">
+                                    <div class="earn-view">
+                                        <span class="fas fa-crown earn-icon .icon">
+                                            <div class="earn-view-text">
+                                                <p class="name-text">Best User Posts</p>
+                                                <h6 class="balance-text">
+                                                    64 users
+                                                </h6>
+                                            </div>
+                                        </span>
+                                    </div>
+
+                                </div>
+                                <div class=" post-button ">
+                                    <a href="" class="di-btn posts2 purple-gradient">Favourite Posts</a>
+                                </div>
+    
+                            </div>
+                            
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row user-admin-post">
+                    <div class="col-lg-4 p-4">
+                        <div class="row user-admin">
+                            <div class="bg-white user-button col-lg-12">
+                                <div class=" user-icon">
+                                    <span class="icon"><i class="fas fa-shopping-cart"></i></span>
+                                    <div class="user-header">
+                                        <p>BOOKED CARS</p>
+                                        <div class="count-booked-cars">
+                                            {{booked_cars}}
+                                        </div>
+                                    </div>
+                                    <div class="user-add-button">
+                                        <a href="{{url_for('admin.booked_cars')}}" class="di-btn user purple-gradient">View Booked </a>
+                                    </div>
+                                </div>
+
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="col-lg-4 p-4">
+                        <div class="row">
+                            <div class="bg-white user-button col-lg-12">
+                                <div class="user-icon">
+                                    <span class="icon"><i class="fas fa-check-circle"></i></span>
+                                    <div class="user-header">
+                                        <p>AVAILABLE CARS</p>
+                                        <div class="count-available-cars">
+                                            {{available_cars}}
+                                        </div>
+                                    </div>
+                                    <div class="user-add-button">
+                                        <a href="{{url_for('admin.available_cars')}}" class="di-btn user purple-gradient">View Available</a>
+                                    </div>
+                                </div>
+
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="col-lg-4 p-4 mr-3">
+                        <div class="row">
+                            <div class="bg-white user-button col-lg-12">
+                                <div class=" user-icon">
+                                    <span class="icon"><i class="fas fa-car"></i></span>
+                                    <div class="user-header">
+                                        <p>ALL CARS</p>
+                                        <div class="count-all-cars">
+                                            {{total_cars}}
+                                        </div>
+                                    </div>
+                                    <div class="user-add-button">
+                                        <a href="{{url_for('admin.getproduct')}}" class="di-btn user purple-gradient">View All</a>
+                                    </div>
+                                </div>
+
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+</div>
+
+{% endblock %}

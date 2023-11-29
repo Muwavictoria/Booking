@@ -1,0 +1,100 @@
+/* cars_admin dashboard */
+.container-fluid.card.card-cars {
+    margin-top: 0px;
+    background: var(--second-color);
+}
+.container-fluid.card.card-cars .btn{
+    background: var(--main-color);
+}
+
+button.btn.add-car {
+    background: var(--main-gradient);
+    font-weight: 600;
+    margin-top: 8px;
+    border-radius: 0px;
+}
+
+button.btn.car-edit {
+    background: var(--first-color);
+}
+
+.modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: var(--second-color);
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 0.3rem;
+    outline: 0;
+}
+
+.modal-title{
+    color: var(--main-color);
+    font-size: 20px;
+    font-weight: 700;
+}
+
+button.btn.save-car {
+    background: var(--main-gradient);
+    margin-top: 10px;
+    width: 150px;
+    /* margin: auto; */
+    margin-left: 150px;
+}
+button.btn.delete-car {
+    background: var(--main-gradient);
+  
+    width: 150px;
+    /* margin: auto; */
+   
+}
+button.btn.update-car {
+    background: var(--main-gradient);
+    /* margin: auto; */
+}
+button.close {
+    padding: 2px;
+    width: 30px;
+    font-size: 30px;
+    color: var(--text-color);
+    border: 0px;
+}
+
+
+
+/* dashboard cars csss */
+.user-button {
+    padding: 0px;
+}
+
+.user-icon {
+    padding: 10px;
+    margin-left: auto;
+    color: var(--main-color);
+    width: 200px;
+    margin-right: auto;
+    margin: auto;
+    text-align: center;
+}
+
+span.icon {
+    font-size: 45px;
+    padding: 20px;
+    font-weight: 700;
+    margin: auto;
+}
+
+.user-header {/* text-align: center; */color: var(--text-color);font-size: 16px;font-weight: 600;}
+
+
+.count-booked-cars, .count-available-cars, .count-all-cars{
+    text-align: center;
+    font-size: 45px;
+    padding: 10px;
+    /* border-radius: 50%; */
+    /* text-shadow: 1px 32px -1px 0 var(--main-color); */
+    /* border: 1px solid; */
+}

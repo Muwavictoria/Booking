@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- <link rel="stylesheet" href="bootstrap/css/bootstrap/bootstrap.min.css"> -->
+      <link rel="stylesheet" href="{{url_for('static',filename='homepage/bootstrap/css/sass.css')}}">
+      <!-- <link rel="stylesheet" href="bootstrap/css/sass.css"> -->
+      <!-- swiper css link -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  
+      <!-- bixicon cdn link -->
+      <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>About us</title>
+</head>
+<body>
+          <!-- Nav bar Header -->
+          <header class="header">
+            <div class="logo">
+           <h1>Car <span>Booking</span>.com</h1>
+            </div>
+            <nav>
+                <div class="navbar">
+                    <ul class="navLinks">
+                        <li><a href="{{url_for('home')}}" class="active">Home</a></li>
+                        <li><a href="#">Products</a></li>
+                        <li><a href="{{url_for('about')}}">About us</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="">Login</a></li>
+                    </ul>
+                </div>
+                <div class="other">
+                    <i class="bx bx-search"></i>
+                    <i class="bx bx-cart-download cart"></i>
+                    <button class="addBtn"><i class="bx bx-plus-circle"></i>Add listing</button>
+                    <i class="bx bx-menu-alt-left" id="menuBtn"></i>
+                  
+                </div>
+                           
+            </nav>
+         </header>
+          <!-- end of nav bar -->
+
+          <!-- about section start -->
+          <div class="about">
+            <div class="swiper myabout">
+                <div class="swiper-wrapper">
+                    <!-- slide 1 -->
+                  <div class="swiper-slide slide slide-one">
+                    <div class="col-1">
+                        <h1>About  car <span>Booking.</span>com</h1>
+                        <h1>Best Way to find <br> your <span>Dream </span> car</h1>
+                     
+                     
+                    </div>
+                   
+                  
+                
+                </div>
+              
+                  <!-- slide 4-->
+                 
+                 
+                
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+              
+              </div>
+          
+          </div>
+          <!-- about section end -->
+        
+            <!--  market section start-->
+  <section class="market">
+    <div class="col-3">
+        <div class="sec">
+        <img src="static/homepage/img/car9.png" alt="" class="one">
+       </div>
+
+        <!-- <div class="service">
+            <img src="img/car11.png" alt="" class="two">
+            <span>30 years of <br>Quality Service</span>
+        </div> -->
+    </div>
+    <div class="col-4">
+        <h4><i class="bx bx-car" >About us</i></h4>
+        <h3>world largest <span>Car <br>Dealer </span> MarketPlace</h3>
+        <p  class="text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque distinctio ex mollitia voluptatibus porro corrupti, fuga explicabo sequi quos architecto velit, corporis impedit odit, expedita itaque? Tempore nesciunt illo aperiam!</p>
+   
+        <p class="p1"> <i class="bx bx-last-page"></i>Lorem ipsum dolor, sit amet consectetur</p>
+        <p class="p1"><i class="bx bx-last-page"></i>Lorem ipsum dolor, sit amet consectetur</p>
+        <p class="p1"><i class="bx bx-last-page"></i>Lorem ipsum dolor, sit amet consectetur</p>
+
+        <button>Discover More<i class="bx bx-right-arrow-alt"></i></button>
+    </div>
+  </section>
+   <!--  enf of market section start-->
+
+<!-- client section start -->
+<section class="client ">
+    <h4> <i class="bx bx-car">Testimonials</i></h4>
+    <h1>what our Client <span>Say's</span></h1>
+
+    <div class="myClient">
+        <div class="client-row">
+            <div class="client-col">
+                <img src="static/homepage/img/staff 7.jpg" alt="">
+                <h5>Muwangozi Victoria</h5>
+                <span>customer</span>
+                <p>Lorem ipsum, dolor sit amet consectetur </p>
+                <div class="star">
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star-half"></i>
+                </div>
+            </div>
+            <div class="client-col"> <img src="static/homepage/img/staff 7.jpg" alt="">
+                <h5>Muwangozi Victoria</h5>
+                <span>customer</span>
+                <p>Lorem ipsum, dolor sit amet consectetur </p>
+                <div class="star">
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star-half"></i>
+                </div></div>
+            <div class="client-col"> <img src="static/homepage/img/staff 7.jpg" alt="">
+                <h5>Muwangozi Victoria</h5>
+                <span>customer</span>
+                <p>Lorem ipsum, dolor sit amet consectetur </p>
+                <div class="star">
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star-half"></i>
+                </div></div>
+            <div class="client-col"> <img src="static/homepage/img/staff 7.jpg" alt="">
+                <h5>Muwangozi Victoria</h5>
+                <span>customer</span>
+                <p>Lorem ipsum, dolor sit amet consectetur </p>
+                <div class="star">
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star-half"></i>
+                </div></div>
+            <div class="client-col"> <img src="static/homepage/img/staff 7.jpg" alt="">
+                <h5>Muwangozi Victoria</h5>
+                <span>customer</span>
+                <p>Lorem ipsum, dolor sit amet consectetur </p>
+                <div class="star">
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star-half"></i>
+                </div>
+            </div>
+            <div class="client-col"> 
+                <img src="static/homepage/img/staff 7.jpg" alt="">
+                <h5>Muwangozi Victoria</h5>
+                <span>customer</span>
+                <p>Lorem ipsum, dolor sit amet consectetur </p>
+                <div class="star">
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star-half"></i>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- client section end -->
+
+
+          
+<!-- team member -->
+<div class="team">
+    <h2>Meet Our Team</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores vero totam dolorem a neque aliquam at aspernatur sit iure voluptatibus impedit harum quis et quaerat illo, facere, reiciendis nesciunt obcaecati?</p>
+    <div class="tt">
+      <div class="box">
+        <img src="static/homepage/img/staff1.jpg">
+        <h3>AKUMU WINNIE</h3>
+        <h4>General Manger</h4>
+       </div>
+
+        <div class="box">
+           <img src="static/homepage/img/staff 2.jpg">
+           <h3>NASUBUGA HADIJA</h3>
+           <h4>Ass Manager</h4>
+        </div>
+
+        <div class="box">
+           <img src="static/homepage/img/staff 8.jpg">
+           <h3>SENYONGA GOEFREY</h3>
+           <h4>Head of Accounts</h4>
+        </div>
+        <div class="box">
+            <img src="static/homepage/img/staff 5.jpg">
+            <h3>OTIM DERRICK</h3>
+            <h4>Auditor</h4>
+         </div>
+
+        
+   </div>
+   <div class="tt">
+    <div class="box">
+      <img src="static/homepage/img/staff 3.jpg">
+      <h3>SHEILA WAZ </h3>
+      <h4>Head of recepition</h4>
+     </div>
+
+      <div class="box">
+         <img src="static/homepage/img/staff 4.jpg">
+         <h3>NANKYA AISHA</h3>
+         <h4>Human resource Manager</h4>
+      </div>
+
+      <div class="box">
+         <img src="static/homepage/img/staff 6.jpg">
+         <h3>SAGALA MUSA</h3>
+         <h4>Sale Manager</h4>
+      </div>
+      <div class="box">
+          <img src="static/homepage/img/staff 7.jpg">
+          <h3>SEKULIMA JOSEPH</h3>
+          <h4>Procument Manager</h4>
+       </div>
+
+      
+ </div>
+</div>
+<!-- end of team members -->
+
+
+
+
+
+
+
+
+
+<!-- footer section start -->
+
+    <section class="footer">
+        <div class="footer-row">
+            <div class="footer-col">
+                <h1 class="logo">car <span class="book">Booking</span>.com</h1>
+                <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit tempora ut, maxime distinctio ipsam </p>
+                <span class="spanm"><i class="bx bx-phone"></i>+256759474617</span>
+                <span class="spanm"><i class="bx bx-location-plus"></i>p.o box 245,Obote road,Lira city</span>
+                <span class="spanm"><i class="bx bx-envelope"></i>carbooking@gmail.com</span>
+            </div>
+            <div class="footer-col">
+                <h5>quick link</h5>
+                <a href=""> <i class="bx bx-chevron-right"></i>About US</a>
+                <a href=""> <i class="bx bx-chevron-right"></i>Products</a>
+                <a href=""> <i class="bx bx-chevron-right"></i>blog</a>
+                <a href=""> <i class="bx bx-chevron-right"></i>contact us</a>
+                          
+
+            </div>
+            <div class="footer-col">
+                <h5>support Center</h5>
+                <a href=""> <i class="bx bx-chevron-right"></i>Auto sprus</a>
+                <a href=""> <i class="bx bx-chevron-right"></i>Booking tips</a>
+                <a href=""> <i class="bx bx-chevron-right"></i>Affiliates</a>
+                <a href=""> <i class="bx bx-chevron-right"></i>FAQ'S</a>
+            </div>
+            <div class="footer-col">
+                <h5>News latter</h5>
+                <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, numquam optio! Deserunt quas </p>
+                <input type="text" placeholder="your Email">
+                <button>Subscribe Now <i class="bx bxl-telegram"></i></button>
+            </div>
+            
+            
+            
+        </div>
+        <div class="footer-bottom">
+            <p>$copy; Copyright 2023 <span>carBooking.com</span> All Right Reserved</p>
+            <div class="social">
+                <i class="bx bxl-facebook"></i>
+                <i class="bx bxl-twitter"></i>
+                <i class="bx bxl-linkedin"></i>
+                <i class="bx bxl-youtube"></i>
+            </div>
+           </div>
+    </section>
+ <!--footer  section end -->
+
+
+    
+
+      <!-- java Script link -->
+      <!-- <script src="bootstrap/js/mainScript.js"></script> -->
+      <script src="{{url_for('static',filename='homepage/bootstrap/js/mainScript.js')}}"></script> 
+
+      <!-- swiper script  -->
+     
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+      <!-- end of java script link -->
+</body>
+</html>

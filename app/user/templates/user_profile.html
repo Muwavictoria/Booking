@@ -1,0 +1,125 @@
+{% extends 'products_base.html' %}
+{% block title %}
+My Car
+{% endblock  %}
+
+{% block content%}
+<div class="container-fluid user-profile-details">
+    <div class="user-details p-0 ">
+        <div class="header user-header">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class="flash-messages">
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        </div>
+    
+        <div class=" user-image">
+            {% if user.image %}
+            <img src="data:image/jpeg;base64,{{ user.image|b64encode }}" alt="{{ user.name }}" width="20px" style="border-radius: 50%;">
+        {% else %}
+            <!-- Provide a default image or handle the case where user.image is None -->
+            <img src="{{ url_for('static', filename='blog/assets/img/profile.png') }}" alt="Default Image" height="20px" style="border-radius: 50%;">
+        {% endif %}
+            <div class="edit-profile">
+                <button  class="btn btn-sm  pull-right user-edit" data-toggle="modal" data-target="#modalUpdate{{ user.user_id }}" >Edit Profile</button>
+            </div>
+        </div>
+        <div class=" user-content">
+
+        </div>
+        <div class="booked_cars">
+            <div class="my-cars-header">
+                <h4> {{ user.username }}'s Booked Cars</h4>
+            </div>
+            <table class="table">
+                <thead>
+                 <tr>
+                    <th scope="col">Car</th>
+                     <th scope="col">Number Plate</th>
+                     <th scope="col">Car Name</th>
+                     <th scope="col">Brand</th>
+                     <th scope="col">Color</th>
+                     <th scope="col">Price</th>
+                     <th scope="col">Seats</th>
+                 </tr>
+                </thead>
+                <tbody>
+                {% for booking in bookings %}
+                 <tr>
+    
+                        <td scope="col">
+                            {% if booking.image is not none %}
+                            <img src="data:image/jpeg;base64,{{ booking.image|b64encode }}" alt="{{ booking.car_name }}" height="25px" style="border-radius: 50%;">
+                            {% else %}
+                            <!-- Provide a default image or handle the case where car.image is None -->
+                            <img src="{{url_for('static', filename='blog/assets/img/car113.jpg')}}" alt="Default Image"  height="25px" style="border-radius: 50%;" >
+                            {% endif %}    
+                        </td>
+                       <td scope="col">{{ booking.number_plate }}</td>
+                       <td scope="col">{{ booking.car_name }}</td>
+                       <td scope="col">{{ booking.brand }}</td>
+                       <td scope="col">{{ booking.color }}</td>
+                       <td scope="col">{{ booking.price }}</td>
+                       <td scope="col">{{ booking.seats }}</td>
+                                 
+                 </tr>
+                 {% endfor %}
+                 
+              </tbody>
+             
+            </table>
+    
+                
+        </div>
+        <!-- edit profile modal start :  -->
+        <div class="modal" tabindex="-1" role="dialog" id="modalUpdate{{ user.user_id  }}">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Edit Profile</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form action="{{url_for('auth.edit_profile')}}" method="post" enctype="multipart/form-data">
+                    <div class="">
+                      <div class="mb-3">
+                        <label for="formFile" class="form-label">Photo</label>
+                        <input class="form-control" type="file" value="{{user.image}}" name="image" id="formFile"required>
+                      </div>
+                      <div class="form-group col-sm">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" value="{{user.username}}" name="username"  placeholder=""required>
+                      </div>
+                      <div class="form-group col-sm">
+                        <label for="Carname">Email</label>
+                        <input type="text" class="form-control" value="{{user.email }}" name="email"  placeholder=""required>
+                      </div>
+                      <div class="form-group col-sm">
+                        <label for="Brand">Password</label>
+                        <input type="password" class="form-control" placeholder="New Password" name="password" value="user.password">
+                    </div>
+                      
+                    </div>  
+                </div>
+                <div class="modal-footer">
+                  <button type="submit" class="btn update-car">Make Changes</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </form>
+              </div>
+            </div>
+          </div>
+          <!-- edit profile modal end  -->
+    </div>
+    
+</div>
+
+
+{% endblock%}

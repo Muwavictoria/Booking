@@ -1,0 +1,180 @@
+{% extends 'car_base.html'%}
+
+{% block title %}
+{% endblock %}
+
+
+{% block content %}
+
+    <!-- NAVBAR START  -->
+    <header>
+        <div class="nav container">
+            <i class="fa-bars fas" id="menu-icon"></i>
+            <a href="" class="logo-item">Car<span>Booking</span>.com</a>
+            <ul class="navbar">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#cars">Cars</a></li>
+                <li><a href="#parts">Parts</a></li>
+                <li><a href="#blog">Our Blog</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+
+            <i class="fas fa-search" id="search-icon"></i>
+            <div class="search-box container">
+                <input type="search" name="" id="" placeholder="Search here...">
+            </div>
+        </div>
+
+    </header>
+     <!-- NAVBAR END  -->
+
+    <!-- HOME START  -->
+
+    <!-- Main Home start  -->
+    <section class="home" id="home">
+        <div class="home-text">
+            <h1>We have Everthing <br> Your <span>car</span> Need</h1>
+            <p>Lorem ipsum dolor, sit amet consectetur   <br>adipisicing elit. Nihil eligendi tenetur, praesentium ipsa quae eum, eveniet cum dicta porro esse <br>facilis quisquam distinctio deserunt autem obcaecati quam quis rerum ab?</p>
+
+            <!-- HOME bUTTON  -->
+            <a href="" class="btn"> Discover Now</a>
+
+        </div>
+
+    </section>
+    <!-- Main Home end  -->
+    <!-- HOME END  -->
+
+    <!-- cars start  -->
+    <section class="cars" id="cars">
+        <div class="heading">
+            <span>All Cars</span>
+            <h2>We have all types of cars</h2>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error quaerat</p>
+
+        </div>
+        <div class="cars-container container">
+            <!-- box1  -->
+            <div class="box">
+                <img src="{{url_for('static', filename='blog/assets/img/car113.jpg')}}" alt="" >
+                <h2>Porche Car</h2>
+            </div>
+            <!-- box1  -->
+            <div class="box">
+                <img src="{{url_for('static', filename='blog/assets/img/car113.jpg')}}" alt="" >
+                <h2>Porche Car</h2>
+            </div>
+            <!-- box1  -->
+            <div class="box">
+                <img src="{{url_for('static', filename='blog/assets/img/car113.jpg')}}" alt="" >
+                <h2>Porche Car</h2>
+            </div>
+            <!-- box1  -->
+            <div class="box">
+                <img src="{{url_for('static', filename='blog/assets/img/car112.jpg')}}" alt="" >
+                <h2>Porche Car</h2>
+            </div>
+            <!-- box1  -->
+            <div class="box">
+                <img src="{{url_for('static', filename='blog/assets/img/car113.jpg')}}" alt="" >
+                <h2>Porche Car</h2>
+            </div>
+            <!-- box1  -->
+            <div class="box">
+                <img src="{{url_for('static', filename='blog/assets/img/car113.jpg')}}" alt="" >
+                <h2>Porche Car</h2>
+            </div>
+           
+           
+        </div>
+    </section>
+    <!-- cars end  -->
+
+    <!-- about start  -->
+    <section class="about container" id="about">
+        <div class="about-img">
+            <img src="{{url_for('static', filename='blog/assets/img/car113.jpg')}}" alt="">
+        </div>
+        <div class="about-text">
+            <span>About us</span>
+            <h2>Cheap Prices With <br> Quality Cars</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam incidunt natus </p>
+            <!-- about button -->
+            <a href="#" class="btn about-btn ">Learn More</a>
+        </div>
+    </section>
+    <!-- about end  -->
+
+    <!-- parts start  -->
+    <section class="parts" id="parts">
+        <div class="heading">
+            <span>What We Offer</span>
+            <h2>Our Car is always excellent</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate incidunt</p>
+        </div>
+         <!-- parts container  -->
+         <div class="parts-container container">
+            <!-- b0x1 -->
+            <div class="box">
+                <img src="{{url_for('static', filename='blog/assets/img/engine.jpg')}}" alt="">
+                <h3>Auto Spare part</h3>
+                <span>$120.99</span>
+                <i class="fa-star fas">6 reviews</i>
+                <a href="#" class="btn buy-now">Buy Now</a>
+                <a href="View Details" class="details"></a>
+            </div>
+            <!-- b0x1 -->
+            <div class="box">
+                <img src="{{url_for('static', filename='blog/assets/img/engine.jpg')}}" alt="">
+                <h3>Auto Spare part</h3>
+                <span>$120.99</span>
+                <i class="fa-star fas">6 reviews</i>
+                <a href="#" class="btn buy-now">Buy Now</a>
+                <a href="View Details" class="details"></a>
+            </div>
+            <!-- b0x1 -->
+            <div class="box">
+                <img src="{{url_for('static', filename='blog/assets/img/engine.jpg')}}" alt="">
+                <h3>Auto Spare part</h3>
+                <span>$120.99</span>
+                <i class="fa-star fas">6 reviews</i>
+                <a href="#" class="btn buy-now">Buy Now</a>
+                <a href="View Details" class="details"></a>
+            </div>
+            <!-- b0x1 -->
+            <div class="box">
+                <img src="{{url_for('static', filename='blog/assets/img/engine.jpg')}}" alt="">
+                <h3>Auto Spare part</h3>
+                <span>$120.99</span>
+                <i class="fa-star fas">6 reviews</i>
+                <a href="#" class="btn buy-now">Buy Now</a>
+                <a href="View Details" class="details"></a>
+            </div>
+            <!-- b0x1 -->
+            <div class="box">
+                <img src="{{url_for('static', filename='blog/assets/img/wheel.jpg')}}" alt="">
+                <h3>Auto Spare part</h3>
+                <span>$120.99</span>
+                <i class="fa-star fas">6 reviews</i>
+                <a href="#" class="btn buy-now">Buy Now</a>
+                <a href="View Details" class="details"></a>
+            </div>
+            <!-- b0x1 -->
+            <div class="box">
+                <img src="{{url_for('static', filename='blog/assets/img/wheel.jpg')}}" alt="">
+                <h3>Auto Spare part</h3>
+                <span>$120.99</span>
+                <i class="fa-star fas">6 reviews</i>
+                <a href="#" class="btn buy-now">Buy Now</a>
+                <a href="View Details" class="details"></a>
+            </div>
+
+         </div>
+    </section>
+
+    <!-- parts end  -->
+
+    
+
+
+{% endblock %}

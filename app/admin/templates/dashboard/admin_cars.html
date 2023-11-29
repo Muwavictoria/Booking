@@ -1,0 +1,261 @@
+{% extends "dashboard/dashboard.html"%}
+
+
+{% block content %}
+<div class="container card card-cars">
+
+  <div class="row">
+  
+
+    <!-- content starts here -->
+    <div class="col">
+      <button  class="btn ml-auto  pull-right add-car" data-toggle="modal" data-target="#myModal" >ADD CAR</button>
+      
+
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-success alert-dismissable" role="alert">
+        <button type="button" class="close" data-dismiss="alert" arial-label="close">
+          <span arial-hidden="true">&times;</span>
+          {{msg}}
+        </button>
+      </div>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+
+
+      <!-- table for displaying fetched car } -->
+      <table class="table">
+        <thead>
+         <tr>
+              <th scope="col">Car</th>
+             <th scope="col">Number Plate</th>
+             <th scope="col">Car Name</th>
+             <th scope="col">Brand</th>
+             <th scope="col">Color</th>
+             <th scope="col">Description</th>
+             <th scope="col">Price</th>
+             <th scope="col">Seats</th>
+             <th scope="col">Actions</th>
+             
+         </tr>
+        </thead>
+        <tbody>
+          {% for car in car%}
+         <tr>
+             <td scope="col">
+              {% if car.image is not none %}
+              <img src="data:image/jpeg;base64,{{ car.image|b64encode }}" alt="{{ car.car_name }}" height="23px" width="23px">
+              {% else %}
+              <!-- Provide a default image or handle the case where car.image is None -->
+              <img src="{{url_for('static', filename='blog/assets/img/car113.jpg')}}" alt="Default Image" height="23px" width="23px">
+              {% endif %}    
+              </td>
+             <td scope="col">{{ car.number_plate}}</td>
+             <td scope="col">{{ car.car_name}}</td>
+             <td scope="col">{{ car.brand}}</td>
+             <td scope="col">{{ car.color}}</td>
+             <td scope="col">{{car.description}}</td>
+             <td scope="col">{{ car.price}}</td>
+             <td scope="col">{{ car.seats}}</td>
+             
+             <td>
+              <button  class="btn btn-sm  pull-right car-edit" data-toggle="modal" data-target="#modalUpdate{{ car.number_plate }}" >Edit</button>
+              <button  class="btn btn-sm btn-danger pull-right car-delete" data-toggle="modal" data-number-plate="{{ car.number_plate }}" data-target="#modalDelete{{ car.number_plate }}">Delete</button>
+             </td>
+         </tr>
+         {% endfor %}
+         
+      </tbody>
+     
+     
+    </table>
+        
+         
+        {% for car in car%}
+         <!--start for Enter a New Car Modal  -->
+         <div id="myModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title text-center">
+                  Please add New car
+                </h5>
+                <button type="button" class="close" data-dismiss="modal">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                
+              </div>
+              <div class="modal-body">
+                <form action="{{url_for('admin.add_products')}}" method="post" enctype="multipart/form-data">
+                  <div class="">
+                    <div class="mb-3">
+                      <label for="formFile" class="form-label">CarImage</label>
+                      <input class="form-control" type="file" name="image" id="formFile" required>
+                    </div>
+                    <div class="form-group col-sm">
+                      <label for="numberplate">Number Plate</label>
+                      <input type="text" class="form-control" name="numberplate" id="numberplate" placeholder="Number plate"required>
+                    </div>
+                    <div class="form-group col-sm">
+                      <label for="Carname">Car Name</label>
+                      <input type="text" class="form-control" name="carname" id="carname" placeholder="Car Name"required>
+                    </div>
+                    <div class="form-group col-sm">
+                      <label for="Brand">Brand</label>
+                      <input type="text" class="form-control" name="brand" id="brand" placeholder="Brand" required>
+                    </div>
+                    <div class="form-group col-sm">
+                      <label for="color">Color</label>
+                      <input type="text" class="form-control" name="color" id="color" placeholder="Color" required>
+                    </div>
+                    <div class="form-group col-sm">
+                      <label for="description">Description</label>
+                      <input type="text" class="form-control" name="description" id="descrip" placeholder="Description" required>
+                    </div>
+                    <div class="form-group col-sm">
+                      <label for="price">Price</label>
+                      <input type="text" class="form-control" name="price" id="price" placeholder="Price"required>
+                    </div>
+                    <div class="form-group col-sm">
+                      <label for="seats">Seats</label>
+                      <input type="text" class="form-control" name="seats" id="Seats" placeholder="Seats" required>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn save-car">SAVE</button>
+                
+                </form>
+
+              </div>
+
+            </div>
+          </div>
+
+         </div>
+         <!--end for Enter a New Car Modal  -->
+         {% endfor %}
+
+         {% for car in car%} 
+        <!--start for Update a Cars Modal  -->
+        <div class="modal" tabindex="-1" role="dialog" id="modalUpdate{{ car.number_plate }}">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form action="/admin/update/{{car.number_plate}}" method="post" enctype="multipart/form-data">
+                  <div class="">
+                    <div class="mb-3">
+                      <label for="formFile" class="form-label">CarImage</label>
+                      <input class="form-control" type="file" value="{{car.image}}" name="new_image" id="formFile"required>
+                    </div>
+                    <div class="form-group col-sm">
+                      <label for="numberplate">Number Plate</label>
+                      <input type="text" class="form-control" value="{{car.number_plate}}" name="numberplate" id="numberplate" placeholder="Number plate"required>
+                    </div>
+                    <div class="form-group col-sm">
+                      <label for="Carname">Car Name</label>
+                      <input type="text" class="form-control" value="{{car.car_name }}" name="new_carname" id="carname" placeholder="Car Name"required>
+                    </div>
+                    <div class="form-group col-sm">
+                      <label for="Brand">Brand</label>
+                      <input type="text" class="form-control" value="{{car.brand}}" name="new_brand" id="brand" placeholder="Brand"required>
+                    </div>
+                    <div class="form-group col-sm">
+                      <label for="color">Color</label>
+                      <input type="text" class="form-control" value="{{car.color}}" name="new_color" id="color" placeholder="Color" required>
+                    </div>
+                    <div class="form-group col-sm">
+                      <label for="description">Description</label>
+                      <input type="text" class="form-control" value="{{car.description}}" name="new_description" id="descrip" placeholder="Description" required>
+                    </div>
+                    <div class="form-group col-sm">
+                      <label for="price">Price</label>
+                      <input type="text" class="form-control" value="{{car.price}}" name="new_price" id="price" placeholder="Price" required>
+                    </div>
+                    <div class="form-group col-sm">
+                      <label for="seats">Seats</label>
+                      <input type="text" class="form-control" value="{{car.seats}}" name="new_seats" id="Seats" placeholder="Seats" required>
+                    </div>
+                  </div>  
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn update-car">UPDATE PRODUCTS</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
+        <!--end for Update a Cars Modal  -->
+        {% endfor %}
+        
+      
+
+        {% for car in car%}
+         <!--start for Delete a Cars Modal  -->
+        <div class="modal" tabindex="-1" role="dialog" id="modalDelete{{ car.number_plate }}">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Are sure you want to delete Car</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p>
+                  {% if car.image is not none %}
+                  <img src="data:image/jpeg;base64,{{ car.image|b64encode }}" alt="{{ car.car_name }}" height="50px" width="50px">
+                  {% else %}
+                  <!-- Provide a default image or handle the case where car.image is None -->
+                  <img src="{{url_for('static', filename='blog/assets/img/car113.jpg')}}" alt="Default Image" height="23px" width="23px">
+                  {% endif %}    
+                </p>
+                
+                <p>Number Plate: {{ car.number_plate }}</p>
+                <p>Car Name: {{ car.car_name }}</p>
+                <p>Color: {{ car.color }}</p>
+                <p>Description: {{ car.description }}</p>
+                <p>Price: {{ car.price }}</p>
+                <p>Seats: {{ car.seats }}</p>
+              </div>
+              <div class="modal-footer">
+                <form action="/admin/delete/{{car.number_plate}}" type="submit"> 
+                  <button type="submit" class="btn delete-car">DELETE</button>
+                </form>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--end for Delete a Cars Modal  -->
+        {% endfor %}
+        
+        
+       
+
+
+
+    </div>
+    <!-- content starts here -->
+    
+  </div>
+
+</div>
+
+
+
+
+
+
+
+{% endblock %}
+

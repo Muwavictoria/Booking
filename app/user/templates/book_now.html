@@ -1,0 +1,89 @@
+{% extends 'products_base.html' %}
+{% block title %}
+Booking
+{% endblock  %}
+{% block content %}
+<div class="container-fluid forms-page bg-light">
+  <form method="post" action="{{ url_for('booking.book_car') }}">
+    <div class="container form-details mb-5">
+      <div class="first-row-form row">
+        <div class="col-sm">
+          <label for="car_name">Car Name</label>
+          <input type="text" class="form-control" name="car_name" required>
+        </div>
+        <div class="col-sm">
+          <label for="number_plate">Number Plate</label>
+          <input type="text" class="form-control" name="number_plate" required>
+        </div>
+      </div>
+      <div class="first-row-form row">
+        <div class="col-sm">
+          <label for="car_price">Car Price per day</label>
+          <input type="text" class="form-control" name="car_price" required>
+        </div>
+        <div class="col-sm">
+          <label for="car_seats">Car Seats</label>
+          <input type="text" class="form-control" name="car_seats" required>
+        </div>
+      </div>
+      <div class="first-row-form row">
+        <div class="col-sm">
+          <label for="pickup_location">Pickup Location</label>
+          <input type="text" class="form-control" name="pickup_location" required>
+        </div>
+        <div class="col-sm">
+          <label for="dropoff_location">DropOff Location</label>
+          <input type="text" class="form-control" name="dropoff_location" required>
+        </div>
+      </div>
+      <div class="first-row-form row">
+        <div class="col-sm">
+          <label for="pickup_date">Pickup Date</label>
+          <input type="date" class="form-control" name="pickup_date" required>
+        </div>
+        <div class="col-sm">
+          <label for="return_date">Return Date</label>
+          <input type="date" class="form-control" name="return_date" required>
+        </div>
+      </div>
+
+      <div class="first-row-form search-btn-form row">
+        <div class="col-sm btn-2">
+          <button class="btn search-button-now form-control" type="submit">Continue</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+{% endblock  %}
+<div class="container form-details-search">
+  <div class="form-heading">
+    <p class="best"><span class="num">200</span> <i class="fas fa-plus"></i> CAR TYPES AND BRANDS</p>
+    <p class="search-best">Search Your <span class="best-cars">Best Cars</span></p>
+  </div>
+  <form method="get" action="{{ url_for('booking.search_cars') }}">
+    <div class="first-row-form row">
+      <div class="col-sm">
+        <label for="car_brand">Car Brand</label>
+        <input type="text" class="form-control" name="car_brand" required>
+      </div>
+      <div class="col-sm">
+        <label for="pickup_location">Pickup Location</label>
+        <input type="text" class="form-control" name="pickup_location" required>
+      </div>
+      <div class="col-sm">
+        <label for="pickup_date">Pickup Date</label>
+        <input type="date" class="form-control" name="pickup_date" required>
+      </div>
+      <div class="col-sm">
+        <label for="return_date">Return Date</label>
+        <input type="date" class="form-control" name="return_date" required>
+      </div>
+      <div class="col-sm">
+        <label for="search"></label>
+        <button class="btn search-button-now form-control" type="submit">Search Car Now</button>
+      </div>
+    </div>
+  </form>
+</div>

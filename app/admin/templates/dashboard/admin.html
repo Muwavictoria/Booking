@@ -1,0 +1,212 @@
+{% extends "dashboard/dashboard.html"%}
+
+
+{% block content %}
+<div class="container card card-cars">
+
+  <div class="row">
+  
+
+    <!-- content starts here -->
+    <div class="col">
+      <button  class="btn ml-auto  pull-right add-car" data-toggle="modal" data-target="#myModal" >ADD ADMIN</button>
+      
+
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-success alert-dismissable" role="alert">
+        <button type="button" class="close" data-dismiss="alert" arial-label="close">
+          <span arial-hidden="true">&times;</span>
+          {{msg}}
+        </button>
+      </div>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+
+
+      <!-- table for displaying fetched car } -->
+      <table class="table">
+        <thead>
+         <tr>
+              <th scope="col">IMAGE</th>
+             <th scope="col">USERNAME</th>
+             <th scope="col">EMAIL</th>
+             <th scope="col">ACTIONS</th>
+             
+         </tr>
+        </thead>
+        <tbody>
+          {% for admin in admins%}
+         <tr>
+             <td scope="col">
+              {% if admin.image is not none %}
+              <img src="data:image/jpeg;base64,{{ admin.image|b64encode }}" alt="{{ admin.username }}" height="30px" width="30px " style="border-radius: 50%;">
+              {% else %}
+              <!-- Provide a default image or handle the case where car.image is None -->
+              <img src="{{url_for('static', filename='blog/assets/img/car113.jpg')}}" alt="Default" height="30px" width="30px " style="border-radius: 50%;">
+              {% endif %}    
+              </td>
+             <td scope="col">{{ admin.username}}</td>
+             <td scope="col">{{ admin.email}}</td>
+             
+             <td>
+              <button  class="btn btn-sm  pull-right car-edit" data-toggle="modal" data-target="#modalUpdate{{ admin.user_id }}" >Edit</button>
+              <button  class="btn btn-sm btn-danger pull-right car-delete" data-toggle="modal" data-number-plate="{{ admin.user_id }}" data-target="#modalDelete{{ admin.user_id }}">Delete</button>
+             </td>
+         </tr>
+         {% endfor %}
+         
+      </tbody>
+     
+     
+    </table>
+        
+         
+        {% for admin in admins%}
+         <!--start for Enter a New Car Modal  -->
+         <div id="myModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title text-center">
+                  Enter New Admin
+                </h5>
+                <button type="button" class="close" data-dismiss="modal">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                
+              </div>
+              <div class="modal-body">
+                <form action="{{url_for('auth.create_admin')}}" method="post" enctype="multipart/form-data">
+                  <div class="">
+                    <div class="mb-3">
+                      <label for="formFile" class="form-label">Admin Image</label>
+                      <input class="form-control" type="file" name="image" id="formFile" required>
+                    </div>
+                    <div class="form-group col-sm">
+                      <label for="numberplate">Username</label>
+                      <input type="text" class="form-control" name="username" id="numberplate" placeholder=""required>
+                    </div>
+                    <div class="form-group col-sm">
+                      <label for="Carname">Password</label>
+                      <input type="text" class="form-control" name="password" id="carname" placeholder=""required>
+                    </div>
+                    <div class="form-group col-sm">
+                      <label for="Brand">Email</label>
+                      <input type="text" class="form-control" name="email" id="brand" placeholder="" required>
+                    </div>
+                    
+                  </div>
+                  <button type="submit" class="btn save-car">SAVE</button>
+                </form>
+
+              </div>
+
+            </div>
+          </div>
+
+         </div>
+         <!--end for Enter a New Car Modal  -->
+         {% endfor %}
+
+         {% for admin in admins%} 
+        <!--start for Update a Cars Modal  -->
+        <div class="modal" tabindex="-1" role="dialog" id="modalUpdate{{ admin.user_id }}">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form action="{{url_for('auth.edit_admin', admin_id=admin.user_id)}}" method="post" enctype="multipart/form-data">
+                    <div class="">
+                        <div class="mb-3">
+                          <label for="formFile" class="form-label">Admin Image</label>
+                          <input class="form-control" type="file" name="image" value="{{admin.image}}" id="formFile" required>
+                        </div>
+                        <div class="form-group col-sm">
+                          <label for="numberplate">Username</label>
+                          <input type="text" class="form-control" name="username"  value="{{admin.username}}" id="username" placeholder=""required>
+                        </div>
+                        <div class="form-group col-sm">
+                          <label for="Brand">Email</label>
+                          <input type="text" class="form-control"  value="{{admin.email}}" name="email" id="brand" placeholder="" required>
+                        </div>
+                      </div>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn update-car">UPDATE PRODUCTS</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
+        <!--end for Update a Cars Modal  -->
+        {% endfor %}
+        
+      
+
+        {% for admin in admins%}
+         <!--start for Delete a Cars Modal  -->
+        <div class="modal" tabindex="-1" role="dialog" id="modalDelete{{ admin.user_id }}">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Are sure you want to delete Admin</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p>
+                  {% if admin.image is not none %}
+                  <img src="data:image/jpeg;base64,{{ admin.image|b64encode }}" alt="{{ admin.username }}" height="50px" width="50px">
+                  {% else %}
+                  <!-- Provide a default image or handle the case where car.image is None -->
+                  <img src="{{url_for('static', filename='blog/assets/img/car113.jpg')}}" alt="Default Image" height="23px" width="23px">
+                  {% endif %}    
+                </p>
+                
+                <p>Username: {{ admin.username}}</p>
+                <p>Email: {{admin.email}}</p>
+            
+              </div>
+              <div class="modal-footer">
+                <form action="{{url_for('auth.delete_admin', admin_id=admin.user_id)}}" type="submit"> 
+                  <button type="submit" class="btn delete-car">DELETE</button>
+                </form>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--end for Delete a Cars Modal  -->
+        {% endfor %}
+        
+        
+       
+
+
+
+    </div>
+    <!-- content starts here -->
+    
+  </div>
+
+</div>
+
+
+
+
+
+
+
+{% endblock %}
+

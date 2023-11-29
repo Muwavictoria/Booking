@@ -1,0 +1,160 @@
+{% extends 'products_base.html' %}
+{% block title %}
+My Car
+{% endblock  %}
+
+{% block content%}
+<div class="container-fluid car-details">
+    <div class="details p-0 ">
+        <div class="container-fluid">
+            <div class="row details-container">
+                <div class="col detail-image">
+                    {% if car.image is not none %}
+                    <img src="data:image/jpeg;base64,{{car.image|b64encode }}" alt="{{ car.car_name }}" class="">
+                    {% else %}
+                    <!-- Provide a default image or handle the case where car.image is None -->
+                    <img src="{{url_for('static', filename='blog/assets/img/car113.jpg')}}" alt="Default Image">
+                    {% endif %} 
+                </div>
+                <div class="col detail-content">
+                    <h3> {{car.car_name}} </h3>
+                    <p><span class="price">${{car.price}}</span> per day</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe ad illo praesentium accusamus earum animi dolore, obcaecati incidunt, eaque laudantium reiciendis repellendus soluta doloribus sit cum. Error iure vitae officia?</p>
+
+                    <div class="catergories-car mb-3">
+                        <ul class="list-unstyled d-flex justify-content-between">
+                           
+                            <li class="cat-item">
+                                <a href="#" class=" text-dark   p-0 bg-light"> 
+                                    <i class="fa-eye far cat-item-icon"></i> <br> <span class="cat-item-name">Seats</span> 
+                                </a>
+                            </li>
+                            <li class="cat-item">
+                                <a href="#" class=" text-dark   p-0 bg-light"> 
+                                    <i class="fa-cart-plus far cat-item-icon"></i> <br> <span class="cat-item-name">Manual</span> 
+                                </a>
+                            </li>
+                            <li class="cat-item">
+                                <a href="#" class=" text-dark   p-0 bg-light"> 
+                                    <i class="fa-car far cat-item-icon"></i> <br> <span class="cat-item-name">Luxury</span> 
+                                </a>
+                            </li>
+                            <li class="cat-item">
+                                <a href="#" class=" text-dark   p-0 bg-light"> 
+                                    <i class="fa-heart far cat-item-icon"></i> <br> <span class="cat-item-name">Bags</span> 
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="book-detail-button">
+                        <button  class="btn ml-auto  pull-right book-car" data-toggle="modal" data-target="#myModal" >book now</button>
+                        <!-- <a href="{{url_for('user.book_now')}}" class="btn btn-book">Book Now</a> -->
+                    </div>
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            <ul class="flash-messages">
+                                {% for message in messages %}
+                                    <li>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endwith %}
+                </div>
+            </div>
+            
+        </div>
+    </div>
+         <!--start for Enter a New Car Modal  -->
+         <div id="myModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title text-center">
+                  Please add New car
+                </h5>
+                <button type="button" class="close" data-dismiss="modal">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                
+              </div>
+              <div class="modal-body">
+                <form method="post" action="{{ url_for('booking.book_car', number_plate = car.number_plate) }}">
+                    {{ csrf_token }}
+                    <div class="container form-details mb-5">
+                        <!-- Car Details Section (Read-only) -->
+                        <div class="row">
+                            <div class="col-sm">
+                                <label for="car_name">Car Name</label>
+                                <input type="text" class="form-control" value="{{ car.car_name }}" name="car_name" readonly>
+                                <input type="hidden" value="{{ car.car_name }}" name="car_name_hidden">
+                                
+                            </div>
+                            <div class="col-sm">
+                                <label for="number_plate">Number Plate</label>
+                                <input type="text" class="form-control" value="{{ car.number_plate }}" name="number_plate" readonly>
+                                <input type="hidden" value="{{ car.number_plate }}" name="number_plate_hidden">
+                            </div>
+                        </div>
+                
+                        <div class="row">
+                            <div class="col-sm">
+                                <label for="car_price">Car Price per day</label>
+                                <input type="text" class="form-control" name="car_price" value="{{ car.price }}" readonly>
+                                <input type="hidden" value="{{ car.color }}" name="color_hidden">
+                            </div>
+                            <div class="col-sm">
+                                <label for="car_seats">Car Seats</label>
+                                <input type="text" class="form-control" name="car_seats" value="{{ car.seats }}" readonly>
+                                <input type="hidden" value="{{ car.seats }}" name="seats_hidden">
+                            </div>
+                        </div>
+                        <!-- End Car Details Section -->
+                
+                        <!-- Editable Section -->
+                        <div class="row">
+                            <div class="col-sm">
+                                <label for="pickup_location">Pickup Location</label>
+                                <input type="text" class="form-control" name="pickup_location" required>
+                            </div>
+                            <div class="col-sm">
+                                <label for="dropoff_location">DropOff Location</label>
+                                <input type="text" class="form-control" name="dropoff_location" required>
+                            </div>
+                        </div>
+                
+                        <div class="row">
+                            <div class="col-sm">
+                                <label for="pickup_date">Pickup Date</label>
+                                <input type="date" class="form-control" name="pickup_date" required>
+                            </div>
+                            <div class="col-sm">
+                                <label for="return_date">Return Date</label>
+                                <input type="date" class="form-control" name="return_date" required>
+                            </div>
+                        </div>
+                        <!-- End Editable Section -->
+                
+                        <div class="row mt-3">
+                            <div class="col-sm">
+                                
+                                <button class="btn btn-primary form-control" type="submit">Continue</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                
+              </div>
+
+            </div>
+          </div>
+
+         </div>
+         <!--end for Enter a New Car Modal  -->
+    
+
+
+</div>
+
+
+{% endblock%}

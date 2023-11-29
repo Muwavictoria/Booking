@@ -1,0 +1,203 @@
+{% extends 'products_base.html' %}
+{% block title %}
+All Cars
+{% endblock  %}
+
+{% block content%}
+
+<!-- start header  -->
+
+
+<!-- end header  -->
+
+<!-- start content  -->
+<div class="container-fluid py-5">
+    <div class="row">
+        <!-- car options  -->
+        <div class="col-lg-2 options-side">
+            <div class="card rounded-0">
+                <div class="card-header text-header text-center">
+                    Find your Car
+                </div>
+                <form action="" method=""></form>
+                    <div class="card-body">
+                    
+                        <!-- seats  -->
+                        <div class="options-options">
+                            <div class="option-links" id="toggle-icon-seat">
+                                <span class="brand-span"> Search by Seats</span> 
+                                <i class="fas fa-plus btn"  id="toggle-button-seat"></i>
+                            </div>
+                            
+                           
+                            <div class="options-check" id="options-check-seat">
+                                {% set seen_seats = [] %}
+                                {% for car in car %}
+                                    {% if car.seats not in seen_seats %}
+                                        <input class="" type="checkbox" value="" id="flexCheckDisabled">
+                                        <label class="label-text" for="flexCheckDisabled">
+                                            {{ car.seats }}
+                                        </label> <br>
+                                        {% set _ = seen_seats.append(car.seats) %}
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <!-- price  -->
+                        <div class="options-options">
+                            <div class="option-links" id="toggle-icon-price">
+                                <span> Search by Price</span> 
+                                <i class="fas fa-plus btn"  id="toggle-button-price"></i>
+                            </div>
+                            
+                           
+                            <div class="options-check" id="options-check-price">
+                                {% set seen_prices = [] %}
+                                {% for car in car %}
+                                    {% if car.price not in seen_prices %}
+                                        <input class="" type="checkbox" value="" id="flexCheckDisabled">
+                                        <label class="label-text" for="flexCheckDisabled">
+                                            {{ car.price }}
+                                        </label> <br>
+                                        {% set _ = seen_prices.append(car.price) %}
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <!-- brand  -->
+                        <div class="options-options">
+                            <div class="option-links" id="option-links-brand">
+                                <span class="brand-span"> Search by brand</span> 
+                                <i class="fas fa-plus btn"  id="toggle-button-brand"></i>
+                            </div>
+                            
+                           
+                            <div class="options-check" id="options-check-brand">
+                                {% set seen_brands = [] %}
+                                {% for car in car %}
+                                    {% if car.brand not in seen_brands %}
+                                        <input class="" type="checkbox" value="" id="flexCheckDisabled-brand">
+                                        <label class="label-text" for="flexCheckDisabled">
+                                            {{ car.brand }}
+                                        </label> <br>
+                                        {% set _ = seen_brands.append(car.brand) %}
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <!-- color  -->
+                        <div class="options-options">
+                            <div class="option-links" id="toggle-icon-color">
+                                <span> Search by Color</span> 
+                                <i class="fas fa-plus btn"  id="toggle-button-color"></i>
+                            </div>
+                            
+                           
+                            <div class="options-check" id="options-check-color">
+                                {% set seen_colors = [] %}
+                                {% for car in car %}
+                                    {% if car.color not in seen_colors %}
+                                        <input class="" type="checkbox" value="" id="flexCheckDisabled">
+                                        <label class="label-text" for="flexCheckDisabled">
+                                            {{ car.color }}
+                                        </label> <br>
+                                        {% set _ = seen_colors.append(car.color) %}
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+
+
+            
+                        
+                    </div>
+                        <div class="footer-search bg-light">
+                            <a href="#" type="submit" class="btn search-btn-options ">Search Car</a>
+                        </div>
+                </form>    
+            </div>
+            
+        </div>
+        <!-- main cars  -->
+        <div class="col-lg-10 main-cars">
+           <div class="row">
+            <div class="col-md-6"></div>
+            <div class="col-md-6 pb-4"></div>
+           </div> 
+           <div class="row">
+            <!-- car card start -->
+            {% for car in car %}
+            <div class="col-md-4">
+                <div class="card mb-4 product-wap rounded-0">
+                    <div class="card rounded-0">
+                        {% if car.image is not none %}
+                        <img src="data:image/jpeg;base64,{{car.image|b64encode }}" alt="{{ car.car_name }}" class="card-img img-card rounded-0 ">
+                        {% else %}
+                        <!-- Provide a default image or handle the case where car.image is None -->
+                        <img src="{{url_for('static', filename='blog/assets/img/car113.jpg')}}" alt="Default Image">
+                        {% endif %} 
+                    
+                    <div class="card-body">
+                        <a href="#" class="h5 text-decoration-none">{{ car.car_name}}</a>
+                        <p class="cost">${{car.price}} /<Span>Per Day</Span></p>
+                        <div class="catergories-car">
+                            <ul class="list-unstyled d-flex justify-content-between">
+                               
+                                <li class="cat-item">
+                                    <a href="#" class=" text-dark-cat   p-0 bg-light"> 
+                                        <i class="fa-eye far cat-item-icon"></i> <br> <span class="cat-item-name">Seats</span> 
+                                    </a>
+                                </li>
+                                <li class="cat-item">
+                                    <a href="#" class=" text-dark-cat   p-0 bg-light"> 
+                                        <i class="fa-cart-plus far cat-item-icon"></i> <br> <span class="cat-item-name">Manual</span> 
+                                    </a>
+                                </li>
+                                <li class="cat-item">
+                                    <a href="#" class=" text-dark-cat   p-0 bg-light"> 
+                                        <i class="fa-car far cat-item-icon"></i> <br> <span class="cat-item-name">Luxury</span> 
+                                    </a>
+                                </li>
+                                <li class="cat-item">
+                                    <a href="#" class=" text-dark-cat   p-0 bg-light"> 
+                                        <i class="fa-heart far cat-item-icon"></i> <br> <span class="cat-item-name">Bags</span> 
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="d-flex bottons-card p-1 justify-content-between mt-2">
+                            <a href="/user/details/{{car.number_plate}}" class="btn  view-details p-2" type="submit">View details</a>
+                            <!-- <a href="#" class="btn btn-primary view-details p-2">Book Now</a> -->
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- car card end  -->
+            <div class="pagination">
+                <ul>
+                    {% if pagination.prev %}
+                        <li><a href="?page={{ page - 1 }}&limit={{ limit }}">Previous</a></li>
+                    {% endif %}
+            
+                    {% if pagination.next %}
+                        <li><a href="?page={{ page + 1 }}&limit={{ limit }}">Next</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+           </div> 
+           <div class="row"></div> 
+        </div>
+    </div>
+</div>
+<!-- end content  -->
+
+
+<!-- start footer  -->
+
+<!-- end footer  -->
+
+{% endblock %}
+
+
