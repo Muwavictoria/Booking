@@ -1,0 +1,51 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+venv/
+env/
+ENV/
+.VENV/
+.venv/
+
+# Flask instance folder
+instance/
+
+# IDE and OS-specific files
+*.swp
+*.swo
+*.DS_Store
+*.vscode/
+*.idea/
+
+# Environment variables
+.env
+.env.*
+
+# Logs and debug
+*.log
+*.pid
+
+# Coverage and testing
+htmlcov/
+.tox/
+.nox/
+.coverage
+.cache
+.pytest_cache/
+
+# Database
+*.sqlite3
+*.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Git
+.git/
