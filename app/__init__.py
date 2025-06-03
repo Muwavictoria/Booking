@@ -4,15 +4,19 @@ from flask_login import LoginManager, current_user
 from flask_apscheduler import APScheduler
 from datetime import datetime, timedelta
 import re, MySQLdb.cursors
+import os
 
+
+
+ENV = os.environ.get('FLASK_ENV', 'development')
 
 app = Flask(__name__)
 
 app.secret_key = 'your secret key'
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'car_app'
+app.config['MYSQL_HOST'] = 'vickieMuwa.mysql.pythonanywhere-services.com'
+app.config['MYSQL_USER'] = 'vickieMuwa'
+app.config['MYSQL_PASSWORD'] = '1rootname?'
+app.config['MYSQL_DB'] = 'car_apvickieMuwa$car_booking'
 
 login_manager = LoginManager(app)
 login_manager.login_view = 'auth.login'  # 'auth.login' should match your login route
@@ -72,6 +76,3 @@ def check_bookings():
         mysql.connection.commit()
         cursor.close()
 
-
-
-  
